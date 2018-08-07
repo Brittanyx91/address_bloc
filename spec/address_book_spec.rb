@@ -53,6 +53,41 @@ require_relative '../models/address_book'
     end
   end
 
+  def check_entry_2(entry, expected_name, expected_number, expected_email)
+   expect(entry.name).to eq expected_name
+   expect(entry.phone_number).to eq expected_number
+   expect(entry.email).to eq expected_email
+ end
+
+
+ describe "attributes" do
+   it "responds to entries" do
+     expect(book).to respond_to(:entries)
+     book.import_from_csv("entries_2.csv")
+     # Check the first entry
+     entry_one = book.entries[0]
+
+
+     check_entry(entry_one, "Brittany", "704-914-8024", "brittany.m.blakley@gmail.com")
+   end
+
+   it "imports the 2nd entry" do
+     book.import_from_csv("entries_2.csv")
+     # Check the second entry
+     entry_two = book.entries[1]
+
+     check_entry(entry_two, "Dean", "848-562-4589", "dean@supernatural.com")
+   end
+
+   it "imports the 3rd entry" do
+     book.import_from_csv("entries_2.csv")
+     # Check the third entry
+     entry_three = book.entries[2]
+
+     check_entry(entry_three, "Leslie", "858-852-6954", "yeswecan@yes.com")
+   end
+ end
+
    describe "attributes" do
      it "responds to entries" do
 
