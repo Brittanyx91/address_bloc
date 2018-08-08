@@ -19,7 +19,16 @@ require_relative '../models/address_book'
 
       check_entry(entry_one, "Bill", "555-555-4854", "bill@blocmail.com")
     end
+describe "nuke" do
+  it "should delete all entries" do
+    book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+    book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+    book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
 
+    book.nuke
+    expect(book.entires.size).to eq 0
+  end
+end
     it "imports the 2nd entry" do
       book.import_from_csv("entries.csv")
       # Check the second entry
