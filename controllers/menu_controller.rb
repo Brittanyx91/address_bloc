@@ -57,7 +57,7 @@ require_relative '../models/address_book'
      selection = gets.chomp.to_i
      selection = selection-=1
 
-     if selection < @address_book.entries.count
+     if selection < @address_book.entries.count && selection >= 0
        puts @address_book.entries[selection]
        puts "Press enter to return to main menu"
        gets.chomp
