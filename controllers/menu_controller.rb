@@ -55,6 +55,7 @@ require_relative '../models/address_book'
    def entry_n_submenu
      print "Entry number to view: "
      selection = gets.chomp.to_i
+     selection = selection-=1
 
      if selection < @address_book.entries.count
        puts @address_book.entries[selection]
